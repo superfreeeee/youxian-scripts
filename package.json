@@ -1,0 +1,26 @@
+{
+  "name": "@youxian/scripts",
+  "version": "0.0.1",
+  "description": "sample library created from @youxian/cli",
+  "keywords": [
+    "shell",
+    "bin",
+    "youxian"
+  ],
+  "author": "superfree",
+  "homepage": "https://github.com/superfreeeee",
+  "license": "MIT",
+  "bin": {
+    "yx-scripts": "bin/scripts"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superfreeeee"
+  },
+  "bugs": {
+    "url": "https://github.com/superfreeeee"
+  }
+}

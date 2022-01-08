@@ -1,0 +1,94 @@
+#!/bin/bash
+
+__version=v1.0.0
+
+# vars
+WORK_PATH=$(pwd)
+ACTION=""
+NPM_CLIENT=yarn
+VERBOSE=false
+SILENT=false
+
+HELP="
+  COMMENT blablablab
+"
+
+# parse params
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  -h | --help)
+    # short cut if ask help
+    echo $HELP
+    exit 0
+    ;;
+
+  -v | --version)
+    # short cut if ask version
+    echo "@youxian/scripts $__version"
+    exit 0
+    ;;
+
+  # ===== none shortcut command =====
+  -c=* | --npm-client=*)
+    NPM_CLIENT="${1#*=}"
+    shift
+    ;;
+
+  -c | --npm-client)
+    NPM_CLIENT=$2
+    shift 2
+    ;;
+
+  -V | --verbose)
+    VERBOSE=true
+    shift
+    ;;
+
+  -s | --silent)
+    SILENT=true
+    shift
+    ;;
+
+  -* | --*)
+    echo "unknown option: $1"
+    shift
+    ;;
+
+  *)
+    # can only pass action once
+    if [[ ACTION -ne "" ]]; then
+      echo "multiple actions: $ACTION, $1"
+      exit 1
+    fi
+
+    ACTION=$1
+    shift
+    ;;
+  esac
+done
+
+# print state
+$VERBOSE && echo "[yx-scripts] WORK_PATH: $WORK_PATH"
+$VERBOSE && echo "[yx-scripts] ACTION     = $ACTION"
+$VERBOSE && echo "[yx-scripts] NPM_CLIENT = $NPM_CLIENT"
+
+case $ACTION in
+install)
+  echo "[yx-scripts] install with NPM_CLIENT = $NPM_CLIENT"
+  $NPM_CLIENT install
+  ;;
+clean) rm -r node_modules dist lib ;;
+clean:dep) rm -r node_modules ;;
+clean:prod) rm -r dist lib ;;
+copy) cp -r sample sample2 ;;
+*)
+  if [[ ACTION -eq "" ]]; then
+    echo "missing action"
+  else
+    echo "unknown action: $ACTION"
+  fi
+  exit 1
+  ;;
+esac
+
+$VERBOSE && echo "[yx-scripts] done."
