@@ -1,6 +1,6 @@
 {
   "name": "@youxian/scripts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "sample library created from @youxian/cli",
   "keywords": [
     "shell",
