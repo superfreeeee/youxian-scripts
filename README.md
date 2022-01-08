@@ -13,8 +13,11 @@ Provide common scripts
 
 ## Parameters
 
-| Name         | Description | Default value |
-| ------------ | ----------- | ------------- |
-| `NPM_CLIENT` |             | `yarn`        |
+| Name               | Description    | Default value |
+| ------------------ | -------------- | ------------- |
+| `-c, --npm-client` | npm 包管理工具 | `yarn`        |
+| `-v, --version`    | 展示版本号     |               |
+| `-V, --verbose`    | 运行时详细输出 |               |
+
 
 <!-- create by @youxian/cli -->

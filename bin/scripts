@@ -1,6 +1,6 @@
 #!/bin/bash
 
-__version=v1.0.0
+__version=v0.0.3
 
 # vars
 WORK_PATH=$(pwd)
